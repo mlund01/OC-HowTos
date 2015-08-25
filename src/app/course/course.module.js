@@ -13,9 +13,6 @@ function CourseConfig($stateProvider) {
                 },
                 'top@course': {
                     templateUrl: 'course/templates/course-top.tpl.html'
-                },
-                'bottom@course': {
-                    templateUrl: 'course/templates/course-bottom.tpl.html'
                 }
             }
         }
