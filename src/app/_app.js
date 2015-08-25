@@ -6,7 +6,8 @@ angular.module( 'orderCloud', [
 	'ngTouch',
 	'ui.router',
 	'ui.bootstrap',
-	'orderCloud.sdk'
+	'orderCloud.sdk',
+	'orderCloud.course'
 ])
 
 	.run( Security )
@@ -19,7 +20,7 @@ angular.module( 'orderCloud', [
 	.constant('appname', 'OrderCloud AngularJS Seed')
 
 	//Client ID for a Registered Distributor or Buyer Company
-	.constant('clientid', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+	.constant('clientid', 'd83b216c-3561-4bca-98fc-92cc62da478d')
 
 	//Test Environment
 	.constant('authurl', 'https://testauth.ordercloud.io/oauth/token')
