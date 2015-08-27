@@ -7,7 +7,9 @@ function CreateProductConfig($stateProvider) {
             url: '/createProduct',
             views: {
                 '': {
-                    templateUrl: 'course/courses/gettingStarted/partialViews/createProduct/templates/createProduct.tpl.html'
+                    templateUrl: 'course/courses/gettingStarted/partialViews/createProduct/templates/createProduct.tpl.html',
+                    controller: 'createProductCtrl',
+                    controllerAs: 'createProduct'
                 }
             }
         })

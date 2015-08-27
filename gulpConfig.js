@@ -61,6 +61,15 @@ module.exports = {
 		import_less: [ source + 'app/**/*.less' ]
 	},
 	vendor_files: {
-		import_less: ['vendor/font-awesome/less/font-awesome.less']
+		import_less: ['vendor/font-awesome/less/font-awesome.less'],
+		js: [
+			'vendor/ace-builds/src-min-noconflict/ace.js',
+			'vendor/ace-builds/src-min-noconflict/mode-javascript.js',
+			'vendor/ace-builds/src-min-noconflict/worker-javascript.js',
+			'vendor/ace-builds/src-min-noconflict/mode-markdown.js',
+			'vendor/ace-builds/src-min-noconflict/mode-json.js',
+			'vendor/ace-builds/src-min-noconflict/worker-json.js',
+			'vendor/ace-builds/src-min-noconflict/theme-twilight.js'
+		]
 	}
 };

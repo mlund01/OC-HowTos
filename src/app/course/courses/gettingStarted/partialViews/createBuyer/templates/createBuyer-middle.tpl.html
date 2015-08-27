@@ -1,0 +1,36 @@
+<div class="center-section center-top">
+    <form>
+        <div ng-init="createBuyer.httpMethod = 'POST'" class="col-xs-4">
+            <label>Method</label>
+            <select class="form-control" ng-options="o for o in createBuyer.httpOptions" ng-model="createBuyer.httpMethod"></select>
+        </div>
+        <div class="col-xs-8">
+            <label>Location</label>
+            <input class="form-control" type="text" ng-model="createBuyer.httpLoc" />
+        </div>
+        <div class="col-xs-4">
+            <label>Param Name</label>
+            <input class="form-control" type="text" value="ContentType" />
+        </div>
+        <div class="col-xs-8">
+            <label>Param Value</label>
+            <input class="form-control" type="text" value="application/json" />
+        </div>
+        <div class="col-xs-4">
+            <input class="form-control" type="text" value="Authorization" />
+        </div>
+        <div class="col-xs-8">
+            <input class="form-control" type="text" ng-model="createBuyer.token" />
+        </div>
+    </form>
+</div>
+<div class="center-section center-bottom">
+    <div style="height: 100%;" class="code-box"
+         ui-ace="{
+      useWrapMode : false,
+      theme:'twilight',
+      mode: 'json',
+      tabSize: '4',
+      onLoad: createBuyer.aceLoaded,
+    }" ng-model="createBuyer.leftScript2"></div>
+</div>

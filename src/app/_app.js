@@ -7,7 +7,8 @@ angular.module( 'orderCloud', [
 	'ui.router',
 	'ui.bootstrap',
 	'orderCloud.sdk',
-	'orderCloud.course'
+	'orderCloud.course',
+	'ui.ace'
 ])
 
 	.run( Security )
