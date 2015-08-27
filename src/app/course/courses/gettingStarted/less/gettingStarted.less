@@ -10,7 +10,7 @@
   overflow-x: auto;
   margin: 15px 0;
   text-align: left;
-  width: 360px;
+  width:100%;
   font-size: 13px !important;
 }
 
@@ -22,13 +22,19 @@
   min-width: 400px;
   font-size: 13px !important;
 }
-
 .course-main-left {
+  display: flex;
+  flex-direction: column;
+  flex: .25;
+  min-width: 400px;
+}
+.left-bottom {
+  flex-basis: 100px;
+}
+.left-main {
   padding: 20px;
   overflow: auto;
   border-right: 1px solid #dcdcdc;
-  flex: .5;
-  min-width: 400px;
   background-color: #f0f0f0;
   text-align: justify;
 
@@ -39,6 +45,7 @@
     text-align: center;
   }
   h1 {
+    text-align: center;
     font-size: 3em;
     color: #3498DB;
     font-weight: 800;
@@ -58,44 +65,82 @@
   }
 
 }
-.course-main-center {
+.section {
   flex: 1;
+  margin: 12px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-around;
-  background-color: #F7F7F7;
-  min-width: 400px;
-  .center-section {
-    width: auto;
-    margin: 20px;
-  }
-  .center-bottom {
-    flex: 1;
-    text-align: center;
-    box-shadow: 3px 3px 7px rgb(0,0,0);
+  width: auto;
+  height: auto;
+  box-shadow: 3px 3px 7px rgb(0,0,0);
+  background-color: #ffffff;
+  .head {
+    min-height: 50px;
 
+    background-color: #F0F0F0;
+    border-bottom: 1px solid #bbbbbb;
+    text-align: center;
+    h1 {
+      color: #333333;
+      margin: 15px;
+      font-size: 1.6em;
+    }
   }
-  .center-top {
+  .form {
+    padding: 15px 5px;
     label {
       padding: 5px;
-      color: white;
       margin: 0;
       font-weight: 500;
     }
     input, select {
       font-size: .9em;
-      background-color: #d2d2d2;
       margin: 2px;
       border-radius: 0;
       height: 30px;
       padding: 0 5px;
     }
-    flex-basis: 300px;
     margin-bottom: 0;
-    box-shadow: 3px 3px 7px rgb(0,0,0);
-    background-color: #34495e;
-
   }
+  .editor {
+    position: relative;
+    padding: 15px 20px;
+    flex: 1;
+    text-align: center;
+    .submission {
+      a div {
+        border-radius: 0;
+        padding: 5px 70px;
+      }
+    }
+  }
+}
+.left-section {
+  flex-basis: 700px;
+}
+
+.right-section-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 700px;
+}
+.right-top-section {
+  flex: .65;
+}
+.right-bottom-section {
+
+  height: auto;
+}
+.course-main-center {
+  flex: 1;
+  background-image: url("fuzzy_back.jpg");
+  background-size: cover;
+  background-color: #48A9B0;
+  padding: 20px;
+  display: flex;
+  align-items: stretch;
+  min-width: 900px;
 }
 .course-main-right {
   flex:1;

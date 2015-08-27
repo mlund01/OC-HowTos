@@ -1,36 +1,74 @@
-<div class="center-section center-top">
-    <form>
-        <div ng-init="createBuyer.httpMethod = 'POST'" class="col-xs-4">
-            <label>Method</label>
-            <select class="form-control" ng-options="o for o in createBuyer.httpOptions" ng-model="createBuyer.httpMethod"></select>
-        </div>
-        <div class="col-xs-8">
-            <label>Location</label>
-            <input class="form-control" type="text" ng-model="createBuyer.httpLoc" />
-        </div>
-        <div class="col-xs-4">
-            <label>Param Name</label>
-            <input class="form-control" type="text" value="ContentType" />
-        </div>
-        <div class="col-xs-8">
-            <label>Param Value</label>
-            <input class="form-control" type="text" value="application/json" />
-        </div>
-        <div class="col-xs-4">
-            <input class="form-control" type="text" value="Authorization" />
-        </div>
-        <div class="col-xs-8">
-            <input class="form-control" type="text" ng-model="createBuyer.token" />
-        </div>
-    </form>
-</div>
-<div class="center-section center-bottom">
-    <div style="height: 100%;" class="code-box"
-         ui-ace="{
+<div class="section left-section">
+    <div class="head">
+        <h1>OrderCloud 3.0 Console</h1>
+    </div>
+    <div class="form">
+        <form>
+            <div ng-init="createBuyer.httpMethod = 'POST'" class="col-xs-4">
+                <label>Method</label>
+                <select class="form-control" ng-options="o for o in createBuyer.httpOptions" ng-model="createBuyer.httpMethod"></select>
+            </div>
+            <div class="col-xs-8">
+                <label>Location</label>
+                <input class="form-control" type="text" ng-model="createBuyer.httpLoc" />
+            </div>
+            <div class="col-xs-4">
+                <label>Param Name</label>
+                <input class="form-control" type="text" value="ContentType" />
+            </div>
+            <div class="col-xs-8">
+                <label>Param Value</label>
+                <input class="form-control" type="text" value="application/json" />
+            </div>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" value="Authorization" />
+            </div>
+            <div class="col-xs-8">
+                <input class="form-control" type="text" ng-model="createBuyer.token" />
+            </div>
+        </form>
+    </div>
+    <div class="editor">
+        <div style="height: 100%;" class="code-box"
+             ui-ace="{
       useWrapMode : false,
-      theme:'twilight',
+      theme:'idle_fingers',
       mode: 'json',
       tabSize: '4',
       onLoad: createBuyer.aceLoaded,
     }" ng-model="createBuyer.leftScript2"></div>
+        <div class="submission">
+            <a>
+                <div class="btn btn-primary">
+                    Submit
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
+<div class="right-section-container">
+    <div class="section right-top-section">
+        <div class="head">
+            <h1>Debug</h1>
+        </div>
+        Here is some stuff
+    </div>
+    <div class="section right-bottom-section">
+        <div class="head">
+            <h1>Response Console</h1>
+        </div>
+        <div class="editor">
+            <div style="height: 100%;" class="code-box"
+                 ui-ace="{
+              useWrapMode : false,
+              theme:'idle_fingers',
+              showGutter: false,
+              mode: 'json',
+              tabSize: '4',
+              onLoad: createBuyer.aceLoaded,
+            }" ng-model="createBuyer.leftScript2"></div>
+        </div>
+    </div>
+</div>
+
+
