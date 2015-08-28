@@ -2,13 +2,33 @@ angular.module('orderCloud.course')
     .factory('ApiConsole', ApiConsoleSvc);
 
 function ApiConsoleSvc($resource) {
-    function _post(url, params, object) {
-        return $resource(url, params).save(object);
+    function _get(url, params, headers) {
+        return $resource(url, params,
+            {
+                'stripTrailingSlashes': true,
+                'actions': {
+                    'apiGet': {
+                        method: 'GET',
+                        headers: headers
+                    }
+                }
+            }
+        ).apiGet();
     }
-    function _get(url, params) {
-        return $resource(url).get(params)
+    function _post(url, params, headers, object) {
+        return $resource(url, {},
+            {
+                'apiPost': {
+                    method: 'POST',
+                    headers: headers,
+                    params: params
+                }
+            }
+        ).apiPost(object);
     }
-    function _list(url, params) {
-        return $resource(url, params)
+
+    return {
+        POST: _post,
+        GET: _get
     }
 }

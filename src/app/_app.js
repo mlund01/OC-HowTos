@@ -12,7 +12,6 @@ angular.module( 'orderCloud', [
 ])
 
 	.run( Security )
-	.run( ApiConsoleSettings )
 	.config( Routing )
 	.config( ErrorHandling )
 	.controller( 'AppCtrl', AppCtrl )
@@ -78,16 +77,4 @@ function AppCtrl( $state, Credentials ) {
 		$state.go('login');
 	};
 
-}
-
-function ApiConsoleSettings( $rootScope, $httpProvider ) {
-
-	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-		if (toState.name.indexOf('course') != -1 && fromState.name.indexOf('course') == -1) {
-			console.log($httpProvider.interceptors);
-		}
-		if (fromState.name.indexOf('course') != -1 && toState.name.indexOf('course') == -1) {
-			console.log('hit from');
-		}
-	})
 }
