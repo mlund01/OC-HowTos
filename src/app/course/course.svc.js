@@ -3,32 +3,14 @@ angular.module('orderCloud.course')
 
 function ApiConsoleSvc($resource) {
     function _get(url, params, headers) {
-        return $resource(url, params,
-            {
-                'stripTrailingSlashes': true,
-                'actions': {
-                    'apiGet': {
-                        method: 'GET',
-                        headers: headers
-                    }
-                }
-            }
-        ).apiGet();
+        return $resource(url, params, {apiGet: {method: 'GET', headers: headers}}, {'stripTrailingSlashes': true}).apiGet().$promise;
     }
     function _post(url, params, headers, object) {
-        return $resource(url, {},
-            {
-                'apiPost': {
-                    method: 'POST',
-                    headers: headers,
-                    params: params
-                }
-            }
-        ).apiPost(object);
+        console.log('hit');
+        return $resource(url, {}, {apiPost: {method: 'POST', headers: headers, params: params}}, {'stripTrailingSlashes': true}).apiPost(object).$promise;
     }
-
     return {
         POST: _post,
         GET: _get
-    }
+    };
 }
