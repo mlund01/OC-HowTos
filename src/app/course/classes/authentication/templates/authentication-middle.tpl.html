@@ -4,40 +4,27 @@
     </div>
     <div class="form">
         <form>
-            <div ng-init="apiIntro.apiCall.method = 'GET'" class="col-xs-4">
+            <div ng-init="authentication.apiCall.method = 'POST'" class="col-xs-4">
                 <label>Method</label>
-                <select class="form-control" ng-options="o for o in apiIntro.httpOptions" ng-model="apiIntro.apiCall.method"></select>
+                <select class="form-control" ng-options="o for o in authentication.httpOptions" ng-model="authentication.apiCall.method"></select>
             </div>
             <div class="col-xs-8">
                 <label>Location</label>
-                <input class="form-control" type="text" ng-model="apiIntro.apiCall.url" />
+                <input class="form-control" type="text" ng-model="authentication.apiCall.url" />
             </div>
-            <div class="col-xs-4">
-                <label>Param Name</label>
-                <input class="form-control" type="text" value="Content-Type"  />
-            </div>
-            <div class="col-xs-8">
-                <label>Param Value</label>
-                <input class="form-control" type="text" ng-model="apiIntro.apiCall.headers['Content-Type']" />
-            </div>
-            <div class="col-xs-4">
-                <input class="form-control" type="text" value="Authorization" />
-            </div>
-            <div class="col-xs-8">
-                <input class="form-control" type="text" ng-model="apiIntro.apiCall.headers.Authorization" />
-            </div>
+
         </form>
     </div>
     <div class="editor">
-        <div style="height: 100%;" class="code-box" readonly
+        <div style="height: 100%;" class="code-box"
              ui-ace="{
-      useWrapMode : false,
+      useWrapMode : true,
       theme:'idle_fingers',
-      mode: 'json',
+      mode: 'markup',
       tabSize: '4',
-    }" ng-model="apiIntro.apiCall.object"></div>
+    }" ng-model="authentication.apiCall.object"></div>
         <div class="submission">
-            <a class="btn btn-primary" ng-click="apiIntro.processApiRequest()">Submit</a>
+            <a class="btn btn-primary" ng-click="authentication.processApiRequest(authentication.apiCall.method, authentication.apiCall.url, authentication.apiCall.params, authentication.apiCall.headers, authentication.apiCall.object)">Submit</a>
         </div>
     </div>
 </div>
@@ -66,13 +53,13 @@
         <div class="editor">
             <div style="height: 100%;" class="code-box" readonly
                  ui-ace="{
-              useWrapMode : false,
+              useWrapMode : true,
               theme:'idle_fingers',
               showGutter: false,
               mode: 'json',
               tabSize: '4',
-              onLoad: apiIntro.aceLoaded,
-            }" ng-model="apiIntro.apiCall.apiResponse"></div>
+              onLoad: authentication.aceLoaded,
+            }" ng-model="authentication.apiCall.apiResponse"></div>
         </div>
     </div>
 </div>

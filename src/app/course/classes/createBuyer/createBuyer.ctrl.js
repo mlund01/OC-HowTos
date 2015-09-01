@@ -3,12 +3,13 @@ angular.module('orderCloud.course')
 
 function CreateBuyerController($filter, ApiConsole) {
     var vm = this;
+    vm.apiCallError = false;
     vm.apiCall = {};
     vm.apiCall.url = 'https://testapi.ordercloud.io/v1/';
     vm.apiCall.params = {};
     vm.apiCall.headers = {};
     vm.apiCall.headers['Content-Type'] = 'application/json';
-    vm.apiCall.headers['Authorization'] = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3IiOiJtbHVuZCIsImNpZCI6IjVmZWY4OWU4LTM3NTMtNDcyOC1hMTI2LTA1NjY4MTZjNWIyZCIsInJvbGUiOiJGdWxsQWNjZXNzIiwiaXNzIjoiaHR0cDovL2ZvdXI1MS5jb20iLCJhdWQiOiJodHRwczovL3Rlc3RhcGkub3JkZXJjbG91ZC5pby9hcGkiLCJleHAiOjE0NDA4MTAwMzQsIm5iZiI6MTQ0MDc4MDAzNH0.plTlhn-9GjlgJ-EdedExhXb5RYwzk9JR2o25ObngI5o';
+    vm.apiCall.headers['Authorization'] = 'Bearer ' + ApiConsole.getSessionCookie();
     vm.apiCall.object = {
         BuyerName: '...',
         BuyerID: '...',
@@ -22,7 +23,11 @@ function CreateBuyerController($filter, ApiConsole) {
             ApiConsole.POST(url, params, headers, object)
                 .then(function(data) {
                     vm.apiCall.apiResponse = $filter('json')(data);
+                    vm.apiCallError = false;
 
+                }, function(reason) {
+                    vm.apiCall.apiResponse = $filter('json')(reason);
+                    vm.apiCallError = true;
                 })
         }
 

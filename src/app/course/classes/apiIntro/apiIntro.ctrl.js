@@ -30,12 +30,12 @@ function ApiIntroController($filter, ApiConsole) {
     vm.apiCall.apiResponse = {};
 
 
-    vm.leftScript1 = {
+    vm.leftScript3 = {
         BuyerName: "...",
         BuyerID: "...",
         Active: false
         };
-    vm.leftScript1 = $filter('json')(vm.leftScript1);
+    vm.leftScript3 = $filter('json')(vm.leftScript3);
     vm.httpOptions = [
         'GET',
         'POST',

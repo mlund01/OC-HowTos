@@ -5,17 +5,16 @@ angular.module('orderCloud.course', [])
 function CourseConfig($stateProvider) {
     $stateProvider
         .state('course', {
-            abstract: true,
-            url: '/course',
-            views: {
-                '': {
-                    templateUrl: 'course/templates/course.tpl.html'
-                },
-                'top@course': {
-                    templateUrl: 'course/templates/course-top.tpl.html'
-                }
-            }
-        }
-    )
+            url: '/course/:courseID/:classID',
+            templateUrl: 'course/templates/course.tpl.html',
+            controller: 'courseCtrl',
+            controllerAs: 'course'
+        })
+        .state('courses', {
+            url: '/courses',
+            templateUrl: 'course/templates/courses.tpl.html',
+            controller: 'coursesCtrl',
+            controllerAs: 'courses'
+        })
 
 }
