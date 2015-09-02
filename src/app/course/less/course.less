@@ -66,6 +66,11 @@
 .course-top-section {
   min-height: 40px;
   background-color: #151f2a;
+  h3 {
+    margin: 10px;
+    padding: 0 0 0 10px;
+    color: white;
+  }
 }
 .course-bottom-section {
   min-height: 80px;
@@ -202,7 +207,7 @@
   >p.tabless {
     text-indent: 0;
   }
-  ol {
+  ol, ul {
     color: #5e696a;
     padding-left: 25px;
     ul {
@@ -213,19 +218,37 @@
     color: #FF6033;
     font-weight: 900;
   }
+  .need {
+    font-size: 0.7em;
+    border-radius: 3px;
+    background-color: #323232;
+    margin-left: 15px;
+    padding: 3px 5px;
+  }
+  .required {
+    color: red;
+  }
+  .recommended {
+    color: orange;
+  }
+  .optional {
+    color: #5ABBE2;
+  }
+
 
 }
 .section {
   flex: 1;
   margin: 12px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   width: auto;
   height: auto;
   box-shadow: 3px 3px 7px rgb(0,0,0);
   background-color: #ffffff;
   .head {
+    width: 100%;
     position: relative;
     min-height: 50px;
     background-color: #F2F6F9;
@@ -276,25 +299,24 @@
     flex: 2;
     text-align: center;
     .submission {
-      a {
+      button {
         border-radius: 0;
         padding: 5px 70px;
       }
     }
   }
-  .text-container {
-    margin: 15px;
-    /*box-shadow: 1px 1px 3px rgb(0,0,0);*/
-    text-align: center;
-
-    p {
-      border-top: 1px dashed #247288;
-      padding: 5px;
-      margin: 0;
-      color: #555555;
+  .log-container {
+    overflow: auto;
+    width: 100%;
+    padding: 0;
+    max-height: 318px;
+    .log-item {
+      height: 50px;
+      background-color: #ff8079;
+      margin: 2px 3px;
     }
-    p:last-child {
-      border-bottom: 1px dashed #247288;
+    .log-item.success {
+      background-color: #5abbe2;
     }
   }
 
@@ -311,6 +333,8 @@
 }
 .right-top-section {
   flex: .65;
+  display: flex;
+
 }
 .right-bottom-section {
 

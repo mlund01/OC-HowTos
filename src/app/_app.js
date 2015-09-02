@@ -25,13 +25,13 @@ angular.module( 'orderCloud', [
 
 	//Test Environment
 	.constant('authurl', 'https://testauth.ordercloud.io/oauth/token')
-	.constant('apiurl', 'https://testapi.ordercloud.io/v1')
+	.constant('apiurl', 'https://testapi.ordercloud.io')
 ;
 
 function Security( $rootScope, $state, Auth ) {
 	$rootScope.$on('$stateChangeStart', function(e, to) {
 		/*TODO: make the '$stateChangeStart event' accept a function so users can control the redirect from each state's declaration.*/
-		if (!to.data.limitAccess) return;
+		if (to.data && !to.data.limitAccess) return;
 		Auth.IsAuthenticated()
 			.catch(sendToLogin);
 

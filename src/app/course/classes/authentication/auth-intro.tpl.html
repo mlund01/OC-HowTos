@@ -1,5 +1,5 @@
 <div class="left-main">
-    <h1>Authentication</h1>
+    <h1>{{course.class.name}}</h1>
     <h2>Getting Started</h2>
     <p>
         Getting Authenticated is the first step in working with the OrderCloud 3.0 API. Before getting authenticated,
@@ -42,10 +42,10 @@
          ui-ace="{
       useWrapMode : false,
       theme:'idle_fingers',
-      mode: 'markup',
+      mode: '',
       tabSize: '4',
       useSoftTabs: true
-    }" ng-model="authentication.leftScript1"></div>
+    }" ng-model="course.class.leftScripts[0]"></div>
     <p class="tabless">
         It is made up of five separate chunks. The first is your ClientID (formatted, 'client_id'),
         which you should already have with you. The second is the grant_type, which you will set to 'password' and
@@ -55,30 +55,13 @@
         Feel free to grab the request body template above, and drop it into the OrderCloud 3.0
         Console to the right. Fill in the client_id, username, and password with yours, and press submit.
     </p>
-    <p ng-show="authentication.apiCallSuccess">
+    <p ng-show="course.class.apiCallSuccess">
         Great Job! You now officially have an authenticated user. The 'access_token' that came back in the response
         object has also been stored in your cookies, and can be auto-filled into your 'Authorization' Header in
         your OrderCloud 3.0 Console settings (look in the upper right hand corner of the OrderCloud 3.0 Console for
         the dropdown)
     </p>
-    <button ui-sref=".createBuyer" class="btn btn-success btn-block" ng-show="authentication.apiCallSuccess"></button>
+    <button ui-sref="course({courseID: course.course.ID, classID: course.course.nextClass})" class="btn btn-success btn-block" ng-show="course.class.apiCallSuccess">Next Class</button>
 
 </div>
-<div class="left-bottom">
-    <div class="course-title">
-        <h2>Getting Started</h2>
-    </div>
-    <div class="status-chip">
-        <span class="dropup" dropdown on-toggle="toggled(open)">
-            2 of 7
-            <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
-                <li><a href>Option 1</a></li>
-                <li><a href>Option 2</a></li>
-            </ul>
-              <a href id="simple-dropdown" dropdown-toggle>
-                  <i class="fa fa-caret-up"></i>
-              </a>
-        </span>
-        <!--<span>2 of 7 <a href=""><i class="fa fa-caret-up"></i></a></span>-->
-    </div>
-</div>
+<div class="left-bottom" ng-include="'course/templates/course-progress.tpl.html'"></div>

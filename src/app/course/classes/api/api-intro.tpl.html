@@ -141,7 +141,7 @@
       mode: 'json',
       tabSize: '4',
       useSoftTabs: true
-    }" ng-model="apiIntro.leftScript3"></div>
+    }" ng-model="course.class.leftScripts[0]"></div>
     <p>
         which is where the content of the object you are creating will be located.
     </p>
@@ -177,38 +177,27 @@
         as the API has robust error messaging functionality.
     </p>
     <p>
-        And finally, in the upper right hand corner, we have provided you with some helpful hints to provide you
-        some guidance processing your API requests. These will always be specific to whatever class you are currently
-        taking.
+        And finally, in the upper right hand corner, we have provided you with a console log. This log will show you
+        all of your previous calls, and if you select on the eye icon, your console will populate with everything
+        you filled in to make that call, including the response.
     </p>
     <p>
-        We have provided you with an example request in the console that will give you a taste of what it
-        will look and feel like as you move on through the tutorials. Go ahead and review the Method, URL, and
-        Parameters at the top of the OrderCloud 3.0 Console. As you heard above, The Method, Location, and Headers
-        will be a part of every request you make. When you are ready, go ahead and click submit and you will
-        see a sample response in the response console.
-    </p>
-    <p>
-        The OrderCloud 3.0 Console will be available to you in every class you take. You have the option to pre-fill
-        the method, url, and paramaters in every course (change the settings in the upper right hand corner of the
-        console container). From now on (after this page), you will be able to make any request you want, in any course,
-        at any time. Additionally, the OrderCloud 3.0 Console is available outside of the tutorials in the Dev Center.
-        Feel free to make your way over and play around, along with our other helpful Dev Tools.
+        The console is currently disabled, because there are not yet any API Calls you can make without being
+        authenticated. However, we have pre-populated the console to give you a taste of what a successful call will
+        look like in a <code>GET</code> User call. Once you move on from this class, The OrderCloud 3.0 Console
+        will be available to you in every class you take. You have the option to pre-fill the method, url, and
+        parameters in every course (change the settings in the upper right hand corner of the console). You will be able
+        to make any request you want, in any course, at any time. Additionally, the OrderCloud 3.0 Console is available
+        outside of the tutorials in the Dev Center. Feel free to make your way over and play around,
+        along with our other helpful Dev Tools.
     </p>
     <h3>
         Goodluck on your adventure with OrderCloud 3.0!!!
     </h3>
-    <button class="btn btn-success btn-block">GO TO NEXT CLASS</button>
+    <button ui-sref="course({courseID: course.course.ID, classID: course.course.nextClass})" class="btn btn-success btn-block" ng-show="course.class.apiCallSuccess">Next Class</button>
 
 
 
 
 </div>
-<div class="left-bottom">
-    <div class="course-title">
-        <h2>{{course.course.name}}</h2>
-    </div>
-    <div class="status-chip">
-        <span>{{course.course.courseLevel}} of {{course.course.classCount}}<a href=""><i class="fa fa-caret-up"></i></a></span>
-    </div>
-</div>
+<div class="left-bottom" ng-include="'course/templates/course-progress.tpl.html'"></div>

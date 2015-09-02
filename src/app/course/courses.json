@@ -12,7 +12,7 @@
     ],
     "Classes": [
       "api-intro",
-      "authentication-intro",
+      "auth-intro",
       "create-buyer",
       "create-product",
       "create-category",

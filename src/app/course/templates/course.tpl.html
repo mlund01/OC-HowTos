@@ -1,6 +1,6 @@
 <div class="course-container">
-    <div>
-        This is the top
+    <div class="course-top-section">
+        <h3>OrderCloud 3.0 Tutorials</h3>
     </div>
     <div class="learning-container">
         <div class="course-main-left" ng-include="course.class.leftContent"></div>
@@ -20,49 +20,45 @@
                             <input class="form-control" type="text" ng-model="course.class.apiCall.url" />
                         </div>
                         <div class="col-xs-4" ng-show="course.class.showHeaders">
-                            <label>Header Name</label>
+                            <label>Header</label>
                             <input class="form-control" type="text" value="Content-Type"  />
                         </div>
                         <div class="col-xs-8" ng-show="course.class.showHeaders">
-                            <label>Header Value</label>
-                            <input class="form-control" type="text" ng-model="course.apiCall.headers['Content-Type']" />
+                            <label>Value</label>
+                            <input class="form-control" type="text" ng-model="course.class.apiCall.headers['Content-Type']" />
                         </div>
                         <div class="col-xs-4" ng-show="course.class.showHeaders">
                             <input class="form-control" type="text" value="Authorization" />
                         </div>
                         <div class="col-xs-8" ng-show="course.class.showHeaders">
-                            <input class="form-control" type="text" ng-model="course.apiCall.headers.Authorization" />
+                            <input class="form-control" type="text" ng-model="course.class.apiCall.headers.Authorization" />
                         </div>
                     </form>
                 </div>
                 <div class="editor">
-                    <div style="height: 100%;" class="code-box" readonly
+                    <div style="height: 100%;" class="code-box"
                          ui-ace="{
-                      useWrapMode : false,
+                      useWrapMode : true,
                       theme:'idle_fingers',
-                      mode: '{{course.class.editMode}}',
+                      mode: 'json',
                       tabSize: '4',
                     }" ng-model="course.class.apiCall.object"></div>
-                    <div class="submission">
-                        <a class="btn btn-primary" ng-click="course.processApiRequest(course.class.apiCall.method, course.class.apiCall.url, course.class.apiCall.params, course.class.apiCall.headers, course.class.apiCall.object)">Submit</a>
+                    <div class="submission" >
+                        <button class="btn btn-primary" ng-disabled="course.submitDisable" ng-click="course.processApiRequest(course.class.apiCall.method, course.class.apiCall.url, course.class.apiCall.params, course.class.apiCall.headers, course.class.apiCall.object)">Submit</button>
                     </div>
                 </div>
             </div>
             <div class="right-section-container">
                 <div class="section right-top-section">
                     <div class="head">
-                        <h1>HELPFUL HINTS</h1>
+                        <h1>CONSOLE LOG</h1>
                     </div>
-                    <div class="text-container">
-                        <p ng-repeat="hint in course.class.hints">
-                            {{hint}}
-                            <!--Did you know that Four51 opened its doors in 1999? In Fact, our current Data-Model was started then
-                            and has been refined for over 15 years to make it what it is today-->
-                        </p>
-                        <p>
-                            <!--Did you know that the World Wide Web conforms with the REST architecture style? In fact, REST was
-                            developed in parallel with HTTP in the late '90s.-->
-                        </p>
+                    <div class="log-container">
+                        <div class="log-item" ng-repeat="log in course.callLog" ng-class="{success: log.success}">
+                            <div class="col-xs-6">
+                                {{log.method}} <span>{{log.url}}</span>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -74,12 +70,12 @@
                     <div class="editor">
                         <div style="height: 100%;" class="code-box" readonly
                              ui-ace="{
-              useWrapMode : false,
-              theme:'idle_fingers',
-              showGutter: false,
-              mode: 'json',
-              tabSize: '4'
-            }" ng-model="course.class.apiCall.apiResponse"></div>
+                          useWrapMode : true,
+                          theme:'idle_fingers',
+                          showGutter: false,
+                          mode: 'json',
+                          tabSize: '4'
+                        }" ng-model="course.class.apiCall.apiResponse"></div>
                     </div>
                 </div>
             </div>
