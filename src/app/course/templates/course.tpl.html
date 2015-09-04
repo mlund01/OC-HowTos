@@ -55,13 +55,17 @@
                     </div>
                     <div class="log-container">
                         <div class="log-item" ng-repeat="log in course.callLog" ng-class="{success: log.success}">
-                            <div class="col-xs-6">
-                                {{log.method}} <span>{{log.url}}</span>
+                            <div class="log-entry-left log-entry">
+                                <div>{{log.method}}</div>
+                            </div>
+                            <div class="log-entry-middle log-entry">
+                                <div>{{log.url}}</div>
+                            </div>
+                            <div class="log-entry-right log-entry">
+                                <div><a href><i class="fa fa-eye"></i></a><a href><i class="fa fa-thumb-tack"></i></a><a href><i class="fa fa-remove"></i></a></div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="section right-bottom-section">
                     <div class="head">
@@ -79,9 +83,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>

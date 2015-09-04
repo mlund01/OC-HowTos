@@ -58,7 +58,7 @@
       "editMode": "",
       "apiCall": {
         "method": "POST",
-        "url": "auth.ordercloud.io/oauth/token",
+        "url": "https://{apiEnv}auth.ordercloud.io/oauth/token",
         "headers": {},
         "params": {},
         "object": ""
@@ -78,7 +78,7 @@
     "Scope": {
       "leftContent": "course/classes/buyers/create-buyer.tpl.html",
       "leftScripts": [
-        "\nMethod: POST\nLocation: https://api.ordercloud.io/v1/buyers\nContent-Type: application/json\nAuthentication: Bearer ...\n",
+        "\nMethod: POST\nLocation: https://api.ordercloud.io/v1/buyers\nContent-Type: application/json\nAuthentication: Bearer {token}\n",
         {
           "Name": "...",
           "ID": "...",
@@ -89,10 +89,10 @@
       "editMode": "json",
       "apiCall": {
         "method": "POST",
-        "url": "api.ordercloud.io/v1/buyers",
+        "url": "https://{apiEnv}api.ordercloud.io/v1/buyers",
         "headers": {
           "Content-Type": "application/json",
-          "Authorization": "Bearer "
+          "Authorization": "Bearer {token}"
         },
         "params": {},
         "object": {
@@ -117,7 +117,7 @@
     "Scope": {
       "leftContent": "course/classes/products/create-product.tpl.html",
       "leftScripts": [
-        "\nMethod: POST\nLocation: https://api.ordercloud.io/v1/products\nContent-Type: application/json\nAuthentication: Bearer ...\n",
+        "\nMethod: POST\nLocation: https://api.ordercloud.io/v1/products\nContent-Type: application/json\nAuthentication: Bearer {token}\n",
         {
           "ID": "...",
           "Description": "...",
@@ -140,28 +140,18 @@
       "editMode": "json",
       "apiCall": {
         "method": "POST",
-        "url": "api.ordercloud.io/v1/products",
+        "url": "https://{apiEnv}api.ordercloud.io/v1/products",
         "headers": {
           "Content-Type": "application/json",
-          "Authorization": "Bearer "
+          "Authorization": "Bearer {token}"
         },
         "params": {},
         "object": {
-          "ID": "...",
           "Description": "...",
           "Name": "...",
           "QuantityMultiplier": 0,
           "ShipWeight": null,
-          "Active": false,
-          "Type": "Static",
-          "StdOrders": false,
-          "ReplOrders": false,
-          "InventoryEnabled": false,
-          "InventoryNotificationPoint": null,
-          "VariantLevelInventory": false,
-          "xp": null,
-          "ExceedInventory": false,
-          "DisplayInventory": false
+          "Active": false
         }
       },
       "xp": {
@@ -176,7 +166,45 @@
     "Name": "Create a Category",
     "ID": "create-category",
     "Description": "Learn the fundamentals of creating a Category in OrderCloud 3.0",
-    "Active": true
+    "Active": true,
+    "Scope": {
+      "leftContent": "course/classes/categories/create-category.tpl.html",
+      "leftScripts": [
+        "\nMethod: POST\nLocation: https://api.ordercloud.io/v1/buyers/{buyerID}/categories\nContent-Type: application/json\nAuthentication: Bearer {token}\n",
+        {
+          "ID": "...",
+          "Name": "...",
+          "Description": "...",
+          "xp": null,
+          "ListOrder": 1,
+          "Active": false,
+          "ParentID": "..."
+        }
+      ],
+      "showHeaders": true,
+      "editMode": "json",
+      "": {
+        "method": "POST",
+        "url": "https://{apiEnv}api.ordercloud.io/v1/buyers/{buyerID}/categories",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {token}"
+        },
+        "params": {},
+        "object": {
+          "ID": "...",
+          "Name": "...",
+          "Description": "...",
+          "xp": null,
+          "ListOrder": 1,
+          "Active": false,
+          "ParentID": "..."
+        }
+      },
+      "xp": {
+        "hints": []
+      }
+    }
   },
   {
     "Name": "Create a User",

@@ -220,19 +220,18 @@
   }
   .need {
     font-size: 0.7em;
-    border-radius: 3px;
-    background-color: #323232;
+    border-radius: 30px;
     margin-left: 15px;
     padding: 3px 5px;
   }
   .required {
-    color: red;
+    background-color: #ffabac;
   }
   .recommended {
-    color: orange;
+    background-color: #ffe89d;
   }
   .optional {
-    color: #5ABBE2;
+    background-color: #a1d0e2;
   }
 
 
@@ -312,11 +311,53 @@
     max-height: 318px;
     .log-item {
       height: 50px;
-      background-color: #ff8079;
+      border-bottom: 1px solid #ff8079;
       margin: 2px 3px;
+      display: flex;
+      align-items: stretch;
+      align-content: stretch;
+      .log-entry-left {
+        color: #ff8079;
+        font-weight: 800;
+      }
     }
     .log-item.success {
-      background-color: #5abbe2;
+      border-bottom: 1px solid #5abbe2;
+      .log-entry-left {
+        color: #5abbe2;
+        font-weight: 800;
+      }
+    }
+    .log-entry {
+      flex: 1;
+      padding: 0 3px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      height: 100%;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 3;
+      }
+      div:nth-of-type(3) {
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+    }
+    .log-entry-left {
+      flex: .3;
+    }
+    .log-entry-right {
+      flex: 0.3;
+      min-width: 100px;
+      max-width: 100px;
+      a {
+        color: #6e6e6e;
+        font-size: 1.5em;
+        margin: 0 5px;
+      }
     }
   }
 

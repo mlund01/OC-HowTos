@@ -17,7 +17,6 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
     //init
     vm.setCourseScope();
     vm.setClassScope();
-    vm.getConfig();
     vm.getCallLog();
     vm.submitDisable = false;
 
@@ -55,18 +54,23 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
     function getConfig() {
         ApiConsole.getConfig(function(data) {
             vm.config.prefill = true;
-            vm.config.buyer = '{buyerID}';
-            vm.config.apiEnv = 'test';
-            vm.config.token = "...";
-            if (vm.config.prefill == true) {
-                if (data.token) {
-                    vm.config.token = data.token;
+            console.log(data);
+            if (vm.config.prefill == true && data) {
+                console.log(data.token);
+                if (data.token && vm.class.apiCall.headers.Authorization) {
+                    vm.class.apiCall.headers.Authorization = vm.class.apiCall.headers.Authorization.replace('{token}', data.token);
                 }
-                vm.class.apiCall.url = "https://" + vm.config.apiEnv + vm.class.apiCall.url;
-                vm.class.apiCall.headers.Authorization = vm.class.apiCall.headers.Authorization + vm.config.token;
+                if (data.apiEnv) {
+                    vm.class.apiCall.url = vm.class.apiCall.url.replace('{apiEnv}', data.apiEnv);
+                } else {
+                    vm.class.apiCall.url = vm.class.apiCall.url.replace('{apiEnv}', "test");
+                }
+                if (data.buyerID) {
+                    vm.class.apiCall.url = vm.class.apiCall.url.replace('{buyerID}', data.buyerID);
+                }
+
             } else {
-                vm.class.apiCall.url = "https://" + vm.config.apiEnv + vm.class.apiCall.url;
-                vm.class.apiCall.headers.Authorization = vm.class.apiCall.headers.Authorization + vm.config.token;
+                vm.class.apiCall.url = vm.class.apiCall.url.replace('{apiEnv}', "test");
             }
 
 
@@ -90,6 +94,7 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
             if (vm.class.xp.setResponse) {
                 vm.class.apiCall.apiResponse = $filter('json')(vm.class.xp.setResponse);
             }
+            getConfig();
         });
     }
 
@@ -126,7 +131,6 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
                     .then(function() {
                         getCallLog();
                         vm.getConfig();
-
                     });
 
 
@@ -149,7 +153,7 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
                     .then(function() {
                         getCallLog();
                         vm.getConfig();
-                        /*$localForage.clear();*/
+
                     });
             })
 
