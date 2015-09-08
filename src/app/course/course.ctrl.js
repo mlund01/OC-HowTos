@@ -1,7 +1,7 @@
 angular.module('orderCloud.course')
     .controller('courseCtrl', CourseController);
 
-function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefinition, $filter, $localForage) {
+function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefinition, $filter) {
     var vm = this;
     vm.class = {};
     vm.course = {};
@@ -40,9 +40,7 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
             });
             vm.classes = output;
         });
-
     }
-
     function stringifyAceModels() {
         for (var i = 0; i < vm.class.leftScripts.length; i++) {
             if ( typeof vm.class.leftScripts[i] != 'string') {
@@ -50,13 +48,10 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
             }
         }
     }
-
     function getConfig() {
         ApiConsole.getConfig(function(data) {
             vm.config.prefill = true;
-            console.log(data);
             if (vm.config.prefill == true && data) {
-                console.log(data.token);
                 if (data.token && vm.class.apiCall.headers.Authorization) {
                     vm.class.apiCall.headers.Authorization = vm.class.apiCall.headers.Authorization.replace('{token}', data.token);
                 }
@@ -72,8 +67,6 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
             } else {
                 vm.class.apiCall.url = vm.class.apiCall.url.replace('{apiEnv}', "test");
             }
-
-
         })
     }
     function setCourseScope() {
@@ -97,14 +90,11 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
             getConfig();
         });
     }
-
-
     function getCallLog() {
         ApiConsole.getCallLog(function(data) {
             vm.callLog = data;
         });
     }
-
     function processApiRequest (method, url, params, headers, object) {
 
         ApiConsole.processRequest(method, url, params, headers, object)
@@ -156,11 +146,28 @@ function CourseController($stateParams, ApiConsole, CourseDefinition, ClassDefin
 
                     });
             })
-
-
     }
-
-
+    function addParam(){
+        /*TODO: adds line for new param in console*/
+    }
+    function deleteLog() {
+        /*TODO: deletes log item*/
+    }
+    function deleteAllLogs(){
+        /*TODO: Deletes all log items*/
+    }
+    function viewLog() {
+        /*TODO: Populates console with log item*/
+    }
+    function pinLog() {
+        /*TODO: Pins a log item to the top of the log*//**/
+    }
+    function saveTab() {
+        /*TODO: Saves working data for current request*/
+    }
+    function tabToggle() {
+        /*TODO: Allows user to toggle between multiple working tabs*/
+    }
 
     vm.httpOptions = [
         'GET',

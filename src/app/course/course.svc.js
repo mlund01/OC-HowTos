@@ -20,12 +20,6 @@ function ApiConsoleSvc($resource, $cookies, $localForage, $q) {
         return $resource(url, {}, {apiDelete: {method: 'DELETE', headers: headers, params: params}}, {'stripTrailingSlashes': true}).apiDelete(object).$promise;
     }
 
-    function _storeSessionCookie(token) {
-        $cookies.put('consoleToken', token);
-    }
-    function _getSessionCookie() {
-        return $cookies.get('consoleToken')
-    }
     function _processRequest(method, url, params, headers, object) {
         if (method == 'POST') {
             return post(url, params, headers, object)
@@ -129,8 +123,6 @@ function ApiConsoleSvc($resource, $cookies, $localForage, $q) {
 
     return {
         processRequest: _processRequest,
-        storeSessionCookie: _storeSessionCookie,
-        getSessionCookie: _getSessionCookie,
         addCallLogItem: _addCallLogItem,
         getCallLog: _getCallLog,
         delCallLogItem: _delCallLogItem,
